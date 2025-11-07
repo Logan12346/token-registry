@@ -16,7 +16,6 @@ token-registry/
 └─ .github/workflows/ ← automated CI checks
 
 yaml
-Copy code
 
 ---
 
@@ -24,7 +23,7 @@ Copy code
 
 Each entry in `registry.json` looks like this:
 
-```json
+```
 {
   "symbol": "LOG",
   "name": "LOG Coin",
@@ -38,6 +37,8 @@ Each entry in `registry.json` looks like this:
     "twitter": "https://x.com/novachain"
   }
 }
+```
+
 🧱 Registry Fields
 Field	Type	Description
 symbol	string	Unique ticker (A-Z, 0-9, _, max 16 chars).
@@ -74,8 +75,7 @@ CI will automatically check schema and duplicates.
 Maintainers verify your token on-chain before merging.
 
 Example PR snippet
-json
-Copy code
+```
 {
   "symbol": "NOVA",
   "name": "Nova Coin",
@@ -83,21 +83,23 @@ Copy code
   "mint_authority": "nova1abcd1234...",
   "logo": "https://raw.githubusercontent.com/nova-chain/token-registry/main/images/NOVA.png"
 }
+```
 🌐 How Wallets / Apps Use It
 Wallets and explorers can fetch the live registry at:
 
-arduino
+```
 Copy code
 https://raw.githubusercontent.com/nova-chain/token-registry/main/registry.json
 or via GitHub Pages (if enabled):
+```
 
-arduino
+```
 Copy code
 https://nova-chain.github.io/token-registry/registry.json
 Example client snippet:
+```
 
-ts
-Copy code
+```
 async function loadRegistry() {
   const res = await fetch("https://nova-chain.github.io/token-registry/registry.json", { cache: "no-cache" });
   const { tokens } = await res.json();
@@ -105,6 +107,7 @@ async function loadRegistry() {
   for (const t of tokens) map[t.symbol] = t;
   return map;
 }
+```
 🛡️ Governance & Safety
 All PRs require review from Nova maintainers.
 
@@ -119,13 +122,16 @@ Mainnet vs Testnet: tokens for test environments must set "chain": "nova-testnet
 🧰 Developer Tools
 Run locally:
 
-bash
+```
 Copy code
 npm install ajv ajv-formats
 node scripts/validate.mjs
 node scripts/format.mjs
-🪩 License
-MIT License © 2025 Nova Chain Contributors
-Logos and trademarks belong to their respective owners.
+```
+📜 License
+© 2025 Nova Chain Contributors
+This token registry (registry.json, schema, and related scripts) is provided under the Nova Public Registry License (NPRL-1.0) —
+permitting open contributions of token metadata while maintaining the proprietary status of Nova’s core blockchain software.
+
 
 💡 Inspired by Solana-Labs’ token-list, re-imagined for Nova’s TokenX-v1 architecture.
