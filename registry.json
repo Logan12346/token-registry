@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "chain": "nova-mainnet",
+  "updatedAt": "2025-11-06T00:00:00Z",
+  "tokens": [
+    {
+      "symbol": "LOG",
+      "name": "LOG Coin",
+      "decimals": 9,
+      "mint_authority": "nova1xxxxxxxx...xxxxx",
+      "logo": "https://raw.githubusercontent.com/nova-chain/token-registry/main/images/LOG.png",
+      "uri": "https://docs.nova-chain.org/tokens/LOG",
+      "extensions": {
+        "description": "Governance/backing token for Nova.",
+        "website": "https://nova-chain.org",
+        "twitter": "https://x.com/novachain"
+      }
+    },
+    {
+      "symbol": "BUNC",
+      "name": "Bunnie Cash Coin",
+      "decimals": 9,
+      "mint_authority": "nova1yyyyyyyy...yyyyy",
+      "logo": "https://raw.githubusercontent.com/nova-chain/token-registry/main/images/BUNC.png"
+    }
+  ]
+}
