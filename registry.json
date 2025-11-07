@@ -1,8 +1,15 @@
 {
   "version": 1,
   "chain": "nova-mainnet",
-  "updatedAt": "2025-11-06T00:00:00Z",
+  "updatedAt": "2025-11-07T03:14:03.381Z",
   "tokens": [
+    {
+      "symbol": "BUNC",
+      "name": "Bunnie Cash Coin",
+      "decimals": 9,
+      "mint_authority": "nova1yyyyyyyy...yyyyy",
+      "logo": "https://raw.githubusercontent.com/nova-chain/token-registry/main/images/BUNC.png"
+    },
     {
       "symbol": "LOG",
       "name": "LOG Coin",
@@ -15,13 +22,6 @@
         "website": "https://nova-chain.org",
         "twitter": "https://x.com/novachain"
       }
-    },
-    {
-      "symbol": "BUNC",
-      "name": "Bunnie Cash Coin",
-      "decimals": 9,
-      "mint_authority": "nova1yyyyyyyy...yyyyy",
-      "logo": "https://raw.githubusercontent.com/nova-chain/token-registry/main/images/BUNC.png"
     }
   ]
 }
