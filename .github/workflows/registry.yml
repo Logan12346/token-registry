@@ -2,10 +2,10 @@ name: Token Registry CI
 
 on:
   pull_request:
-    paths: ["registry.json", "registry.schema.json", "scripts/**"]
+    paths: ["registry.json", "registry.schema.json", "scripts/**", ".github/workflows/**", "package.json", "package-lock.json"]
   push:
     branches: [ main ]
-    paths: ["registry.json"]
+    paths: ["registry.json", "registry.schema.json", "scripts/**", ".github/workflows/**", "package.json", "package-lock.json"]
 
 jobs:
   validate:
@@ -15,15 +15,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      # 👇 force-install into the repo root
-      - run: npm init -y
-      - run: npm i ajv@8.17.1 ajv-formats@3.0.1 --no-audit --no-fund --prefix .
-      # 👇 sanity check that node_modules exists where we expect
-      - run: |
-          pwd
-          ls -la
-          ls -la node_modules || true
-      - run: node scripts/validate.mjs
+          cache: npm
+      - run: npm ci
+      - run: npm run validate
 
   format-on-main:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -33,9 +27,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm init -y
-      - run: npm i ajv@8.17.1 ajv-formats@3.0.1 --no-audit --no-fund --prefix .
-      - run: node scripts/format.mjs
+          cache: npm
+      - run: npm ci
+      - run: npm run format
       - name: Commit formatted file
         run: |
           git config user.name "Nova Registry Bot"
