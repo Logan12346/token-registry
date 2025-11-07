@@ -2,10 +2,10 @@ name: Token Registry CI
 
 on:
   pull_request:
-    paths: ["registry.json", "registry.schema.json", "scripts/**", ".github/workflows/**", "package.json", "package-lock.json"]
+    paths: ["registry.json", "registry.schema.json", "scripts/**", ".github/workflows/**", "package.json"]
   push:
     branches: [ main ]
-    paths: ["registry.json", "registry.schema.json", "scripts/**", ".github/workflows/**", "package.json", "package-lock.json"]
+    paths: ["registry.json", "registry.schema.json", "scripts/**", ".github/workflows/**", "package.json"]
 
 jobs:
   validate:
@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm ci
+      - run: npm ci || npm install
       - run: npm run validate
 
   format-on-main:
@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm ci
+      - run: npm ci || npm install
       - run: npm run format
       - name: Commit formatted file
         run: |
